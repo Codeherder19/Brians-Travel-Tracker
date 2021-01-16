@@ -39,4 +39,10 @@ describe('Destinations', () => {
     expect(trip2.flightCostPerPerson).to.eq(1000);
   })
 
-  });
+  it('each destination should have an image and alt text for that image' () => {
+    expect(trip1.image).to.eq("https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80");
+    expect(trip2.alt).to.eq("overview of city buildings with a clear sky");
+    expect(trip2.image).to.eq("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80",);
+    expect(trip2.alt).to.eq("city with people walking in crosswalk and brightly lit shops at night");
+  })
+});
