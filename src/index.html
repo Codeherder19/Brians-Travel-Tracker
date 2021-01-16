@@ -1,13 +1,127 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+  <head
+    <meta charset="utf-8">
     <title>Brian's Travel Tracker</title>
+    <link rel="stylesheet" type="text/scss" href="./css/styles.scss">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <header>
+      <h1 class="company-name">Travel by Brian</h1>
+      <h1 class="welcome-msg">Welcome, Cameron Aragon!</h1>
+    </header>
+    <aside>
+      <h2 class="trips-header">My Trips</h2>
+      <section class="my-trips">
+        <div class="trip-card">
+          <p class="destination-name">Denver, CO</p>
+          <p>01/01/21 - 01/07/21</p>
+          <div class="trip-image">img placeholder</div>
+          <p>Archived trip</p>
+        </div>
+        <div class="trip-card">
+          <p class="destination-name">Hayward, CA</p>
+          <p>01/14/21 - 01/20/21</p>
+          <div class="trip-image">img placeholder</div>
+          <p>Enjoy your trip!</p>
+        </div>
+        <div class="trip-card">
+          <p class="destination-name">Isabela, Puerto Rico</p>
+          <p>01/23/21 - 02/07/21</p>
+          <div class="trip-image">img placeholder</div>
+          <p>Approved!</p>
+        </div>
+        <div class="trip-card">
+          <p class="destination-name">Denver, CO</p>
+          <p>01/01/21 - 01/07/21</p>
+          <div class="trip-image">img placeholder</div>
+          <p>Archived trip</p>
+        </div>
+        <div class="trip-card">
+          <p class="destination-name">Hayward, CA</p>
+          <p>01/14/21 - 01/20/21</p>
+          <div class="trip-image">img placeholder</div>
+          <p>Enjoy your trip!</p>
+        </div>
+        <div class="trip-card">
+          <p class="destination-name">Isabela, Puerto Rico</p>
+          <p>01/23/21 - 02/07/21</p>
+          <div class="trip-image">img placeholder</div>
+          <p>Approved!</p>
+        </div>
+      </section>
+    </aside>
+    <main>
+      <form>
+        <p class="money-spent">Total spent on trips this year is $$$$$ (this includes a 10% agency fee)</p>
+        <div class="form-wrapper">
+          <div class="input-wrapper">
+            <label for="Date">Date of Trip</label>
+            <input placeholder="Date" type="text" id="Date" name="Date"></input>
+          </div>
+          <div class="input-wrapper">
+            <label for="Duration">Duration</label>
+            <input placeholder="Duration" type="text" id="Duration" name="Duration"></input>
+          </div>
+          <div class="input-wrapper">
+            <label for="Travelers">Travelers</label>
+            <input placeholder="Travelers" type"text" id="Travelers" name="Travelers"></input>
+          </div>
+        </div>
+      </form>
+      <section>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder
+          </div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+        <div class="destination-card">
+          <p class="destination-name">Destination, Name</p>
+          <div class="trip-image">Img placeholder</div>
+          <button class="reserve-button">Reserve</button>
+        </div>
+      </section>
+      <div class="trip-submit-wrapper">
+        <button class="calculate-cost">Calculate Cost</button>
+        <button class="submit">Submit Request</button>
+      </div>
+    </main>
   </body>
 </html>

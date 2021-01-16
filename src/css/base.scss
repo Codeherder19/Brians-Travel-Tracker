@@ -1,7 +1,132 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
 
-body {
-  background: $primary-background;
-}
+
+  body {
+    font-family: courier,arial,helvetica;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: .2fr 1.8fr;
+    grid-template-rows:  .1fr 1.9fr;
+    grid-template-areas:
+      "header header"
+      "aside main";
+  }
+
+  header {
+    display: flex;
+    justify-content: space-around;
+    border: solid black;
+    background-color: #77B33E;
+    grid-area: header;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #325084;
+    // border: solid black;
+  }
+
+  .my-trips {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    border: solid black;
+    grid-area: aside;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #325084;
+    // border: solid black;
+    grid-area: main;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    overflow-y: scroll;
+    grid-gap: 1rem;
+    // border: solid black;
+    height: 40rem;
+    width: 90%;
+  }
+
+  .input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+  }
+
+  .input-wrapper:nth-child(1) {
+    width: 18rem;
+  }
+
+  .trip-submit-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 20rem;
+  }
+
+  h1 {
+    color: #ffffff;
+    font-size: 3rem;
+  }
+
+  .trips-header,
+  .money-spent,
+  label {
+    color: #ffffff;
+  }
+
+
+  button {
+    border-radius: 1rem;
+    margin: 1rem;
+    color: #ffffff;
+    background-color: green;
+
+  }
+
+  .calculate-cost,
+  .submit {
+    background-color: #3383B4;
+    height: 3rem;
+    width: 8rem;
+  }
+
+  .destination-card {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F0CB1F;
+    border: solid black;
+    height: 20rem;
+  }
+
+  .trip-card {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gold;
+    border: solid black;
+    width: 15rem;
+    height: 60rem;
+  }
+
+  .trip-image {
+    background-color: #ffffff;
+    border: solid black;
+    height: 13rem;
+    width: 13rem;
+  }
