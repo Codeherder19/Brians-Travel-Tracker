@@ -1,7 +1,92 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,164,151,1) 0%, rgba(232,70,187,1) 100%);
-;
 
-body {
-  background: $primary-background;
-}
+
+  body {
+    font-family: fantasy;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: .2fr 1.8fr;
+    grid-template-rows:  .1fr 1.9fr;
+    grid-template-areas:
+      "header header"
+      "aside main";
+    background-color: gold;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-around;
+    border: solid black;
+    grid-area: header;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .my-trips {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    border: solid black;
+    grid-area: aside;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid black;
+    grid-area: main;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    overflow-y: scroll;
+    grid-gap: 1rem;
+    border: solid black;
+    height: 40rem;
+    width: 90%;
+  }
+
+  .input-wrapper {
+    display: flex;
+  }
+
+  .trip-submit-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+  }
+
+  .destination-card {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid black;
+    height: 20rem;
+  }
+
+  .trip-card {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid black;
+    width: 15rem;
+    height: 60rem;
+  }
+
+  .trip-image {
+    border: solid black;
+    height: 13rem;
+    width: 13rem;
+  }
