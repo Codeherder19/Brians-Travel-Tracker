@@ -1,7 +1,7 @@
 
 
   body {
-    font-family: fantasy;
+    font-family: courier,arial,helvetica;
     display: grid;
     height: 100vh;
     grid-template-columns: .2fr 1.8fr;
@@ -9,13 +9,13 @@
     grid-template-areas:
       "header header"
       "aside main";
-    background-color: gold;
   }
 
   header {
     display: flex;
     justify-content: space-around;
     border: solid black;
+    background-color: #77B33E;
     grid-area: header;
   }
 
@@ -23,6 +23,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #325084;
+    // border: solid black;
   }
 
   .my-trips {
@@ -38,7 +40,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid black;
+    background-color: #325084;
+    // border: solid black;
     grid-area: main;
   }
 
@@ -46,6 +49,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1rem;
   }
 
   section {
@@ -53,25 +57,59 @@
     grid-template-columns: 2fr 2fr 2fr;
     overflow-y: scroll;
     grid-gap: 1rem;
-    border: solid black;
+    // border: solid black;
     height: 40rem;
     width: 90%;
   }
 
   .input-wrapper {
     display: flex;
+    justify-content: space-between;
+    width: 16rem;
+  }
+
+  .input-wrapper:nth-child(1) {
+    width: 18rem;
   }
 
   .trip-submit-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 20rem;
+  }
+
+  h1 {
+    color: #ffffff;
+    font-size: 3rem;
+  }
+
+  .trips-header,
+  .money-spent,
+  label {
+    color: #ffffff;
+  }
+
+
+  button {
+    border-radius: 1rem;
+    margin: 1rem;
+    color: #ffffff;
+    background-color: green;
+
+  }
+
+  .calculate-cost,
+  .submit {
+    background-color: #3383B4;
+    height: 3rem;
+    width: 8rem;
   }
 
   .destination-card {
     display:flex;
     flex-direction: column;
     align-items: center;
+    background-color: #F0CB1F;
     border: solid black;
     height: 20rem;
   }
@@ -80,12 +118,14 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    background-color: gold;
     border: solid black;
     width: 15rem;
     height: 60rem;
   }
 
   .trip-image {
+    background-color: #ffffff;
     border: solid black;
     height: 13rem;
     width: 13rem;
