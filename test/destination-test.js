@@ -29,5 +29,14 @@ describe('Destinations', () => {
     expect(trip2.location).to.eq("Tokyo, Japan");
   })
 
-  // it('each destination should have a ')
+  it('each destination should have a estimated lodging cost per day', () => {
+    expect(trip1.lodgingCostPerDay).to.eq(70);
+    expect(trip2.lodgingCostPerDay).to.eq(125);
+  })
+
+  it('each destination should have an estimatedflight cost per traveler', () => {
+    expect(trip1.flightCostPerPerson).to.eq(400);
+    expect(trip2.flightCostPerPerson).to.eq(1000);
+  })
+
   });
