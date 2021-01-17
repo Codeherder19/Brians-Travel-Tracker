@@ -35,5 +35,10 @@ describe('Traveler', () => {
     expect(traveler2.name).to.eq("Rachael Vaughten");
   })
 
+  it('traveler should have a traveler type', () => {
+    expect(traveler1.type).to.eq("relaxer");
+    expect(traveler2.type).to.eq("thrill-seeker");
+  })
+
 
 });
