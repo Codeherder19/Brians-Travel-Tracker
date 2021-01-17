@@ -81,6 +81,11 @@ describe('Trip', () => {
     expect(trip2.imageAltText).to.eq("city with people walking in crosswalk and brightly lit shops at night")
   })
 
+  it('should be able to calculate total trip cost with 10% agency fee included', () => {
+    expect(trip1.calculateTotalTripCost()).to.eq(6270);
+    expect(trip2.calculateTotalTripCost()).to.eq(7150);
+  })
+
 
 
 

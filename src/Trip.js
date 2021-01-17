@@ -18,7 +18,7 @@ class Trip {
   calculateTotalTripCost() {
     const totalLodgingExpenses = this.lodgingCostPerDay * this.duration;
     const totalFlightExpenses = this.flightCostPerPerson * this.numberOfTravelers;
-    const totalCost = (totalLodgingExpenses + totalFlightExpenses) * 1.1;
+    const totalCost = Math.floor((totalLodgingExpenses + totalFlightExpenses) * 1.1);
     return totalCost;
   }
 }
