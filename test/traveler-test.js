@@ -50,5 +50,12 @@ describe('Traveler', () => {
     expect(traveler1.trips[0].status).to.eq("archived");
   })
 
+  it('traveler should have a way to calculate the total amount of money spent on trips for a given year', () => {
+    expect(traveler1.calculateTotalSpentOnTripsForGivenYear(2020)).to.eq(5857);
+    expect(traveler1.calculateTotalSpentOnTripsForGivenYear(2021)).to.eq(7150);
+    expect(traveler2.calculateTotalSpentOnTripsForGivenYear(2020)).to.eq(4653);
+    expect(traveler2.calculateTotalSpentOnTripsForGivenYear(2021)).to.eq(8745);
+  })
+
 
 });
