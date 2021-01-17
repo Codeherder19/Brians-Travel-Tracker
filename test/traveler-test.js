@@ -25,5 +25,12 @@ describe('Traveler', () => {
     expect(Traveler).to.be.a('function');
   })
 
+  it('should initialize with an id', () => {
+    expect(traveler1.id).to.eq(1);
+    expect(traveler2.id).to.eq(2);
+  })
+
+  
+
 
 });
