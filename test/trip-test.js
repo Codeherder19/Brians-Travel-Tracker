@@ -22,13 +22,40 @@ describe('Destinations', () => {
   })
 
   it('should initialize with a userID', () => {
-    expect(trip1.userID).to.eql(1);
-    expect(trip2.userID).to.eql(1);
+    expect(trip1.userID).to.eq(1);
+    expect(trip2.userID).to.eq(1);
   })
 
   it('should initialize with a destination id', () => {
-    expect(trip1.destinationID).to.eql(2);
-    expect(trip2.destinationID).to.eql(8);
+    expect(trip1.destinationID).to.eq(2);
+    expect(trip2.destinationID).to.eq(8);
   })
+
+  it('should initialize with a number of travelers', () => {
+    expect(trip1.numberOfTravelers).to.eq(5);
+    expect(trip2.numberOfTravelers).to.eq(6);
+  })
+
+  it('should intitialize with a start date', () => {
+    expect(trip1.date).to.eq("2020/10/04");
+    expect(trip2.date).to.eq("2021/02/07");
+  })
+
+  it('should initialize with a duration', () => {
+    expect(trip1.duration).to.eq(18);
+    expect(trip2.duration).to.eq(4);
+  })
+
+  it('should initialize with a status', () => {
+    expect(trip1.status).to.eq('pending');
+    expect(trip2.status).to.eq('approved');
+  })
+
+  it('should initialize with an array of suggested activities', () => {
+    expect(trip1.suggestedActivities).to.eql([])
+    expect(trip2.suggestedActivities).to.eql([])
+  })
+
+
 
 });
