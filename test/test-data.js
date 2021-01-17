@@ -446,20 +446,20 @@ let trips = {
         },
         {
             "id": 5,
-            "userID": 1,
+            "userID": 2,
             "destinationID": 5,
             "travelers": 3,
-            "date": "2020/04/30",
+            "date": "2021/01/16",
             "duration": 18,
             "status": "approved",
             "suggestedActivities": []
         },
         {
             "id": 6,
-            "userID": 1,
+            "userID": 2,
             "destinationID": 6,
             "travelers": 3,
-            "date": "2020/06/29",
+            "date": "2021/06/29",
             "duration": 9,
             "status": "approved",
             "suggestedActivities": []
@@ -486,17 +486,17 @@ let trips = {
         },
         {
             "id": 9,
-            "userID": 1,
+            "userID": 2,
             "destinationID": 9,
             "travelers": 5,
-            "date": "2019/12/19",
+            "date": "2021/12/19",
             "duration": 19,
-            "status": "approved",
+            "status": "pending",
             "suggestedActivities": []
         },
         {
             "id": 10,
-            "userID": 1,
+            "userID": 2,
             "destinationID": 10,
             "travelers": 6,
             "date": "2020/07/23",
@@ -504,11 +504,25 @@ let trips = {
             "status": "approved",
             "suggestedActivities": []
         }]
-      };
+      }
+
+      let travelers = {
+    "travelers": [
+        {
+            "id": 1,
+            "name": "Ham Leadbeater",
+            "travelerType": "relaxer"
+        },
+        {
+            "id": 2,
+            "name": "Rachael Vaughten",
+            "travelerType": "thrill-seeker"
+        }]
+      }
 
 
 
 
 
 
-export { destinations, trips };
+export { destinations, trips, travelers};

@@ -88,9 +88,13 @@ describe('Trip', () => {
 
   it('should be able to determine if a trip is current or past', () => {
     trip1.determineIfTripIsPastOrCurrent(trip1.date, trip1.duration);
-    expect(trip1.status).to.eq("Archived");
+    expect(trip1.status).to.eq("pending");
     trip2.determineIfTripIsPastOrCurrent(trip2.date, trip2.duration);
-    expect(trip2.status).to.eq("Current");
+    expect(trip2.status).to.eq("current");
+    const trip3 = new Trip(trips.trips[9], tripDestinations);
+    trip3.determineIfTripIsPastOrCurrent(trip3.date, trip3.duration);
+    expect(trip3.status).to.eq("archived");
+
 
   })
 
