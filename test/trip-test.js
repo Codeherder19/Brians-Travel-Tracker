@@ -6,7 +6,7 @@ import Destinations from '../src/Destinations';
 import { trips } from './test-data';
 import { destinations } from './test-data';
 
-describe('Destinations', () => {
+describe('Trip', () => {
   let tripDestinations;
   let trip1;
   let trip2;
@@ -55,6 +55,32 @@ describe('Destinations', () => {
     expect(trip1.suggestedActivities).to.eql([])
     expect(trip2.suggestedActivities).to.eql([])
   })
+
+  it('should initialize with a destination name', () => {
+    expect(trip1.destinationName).to.eq("Stockholm, Sweden")
+    expect(trip2.destinationName).to.eq("Tokyo, Japan")
+  })
+
+  it('should initialize with an estimated lodging cost per day', () => {
+    expect(trip1.lodgingCostPerDay).to.eq(100);
+    expect(trip2.lodgingCostPerDay).to.eq(125);
+  })
+
+  it('should initialize with an estimated flight cost per person', () => {
+    expect(trip1.flightCostPerPerson).to.eq(780)
+    expect(trip2.flightCostPerPerson).to.eq(1000)
+  })
+
+  it('should initialize with a trip image', () => {
+    expect(trip1.tripImage).to.eq("https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
+    expect(trip2.tripImage).to.eq("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80")
+  })
+
+  it('should initialize with with alt text that describes the trip image', () => {
+    expect(trip1.imageAltText).to.eq("city with boats on the water during the day time")
+    expect(trip2.imageAltText).to.eq("city with people walking in crosswalk and brightly lit shops at night")
+  })
+
 
 
 
