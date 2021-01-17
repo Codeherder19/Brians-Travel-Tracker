@@ -40,5 +40,15 @@ describe('Traveler', () => {
     expect(traveler2.type).to.eq("thrill-seeker");
   })
 
+  it('traveler should instantiate with an array of trips', () => {
+    expect(traveler1.trips.length).to.eq(6);
+    expect(traveler2.trips.length).to.eq(4);
+  })
+
+  it('travelers trips array should have status updated based on', () => {
+    expect(traveler2.trips[0].status).to.eq("current");
+    expect(traveler1.trips[0].status).to.eq("archived");
+  })
+
 
 });
