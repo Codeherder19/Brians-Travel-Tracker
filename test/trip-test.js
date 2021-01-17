@@ -38,7 +38,7 @@ describe('Trip', () => {
 
   it('should intitialize with a start date', () => {
     expect(trip1.date).to.eq("2020/10/04");
-    expect(trip2.date).to.eq("2021/02/07");
+    expect(trip2.date).to.eq("2021/01/15");
   })
 
   it('should initialize with a duration', () => {
@@ -86,7 +86,12 @@ describe('Trip', () => {
     expect(trip2.calculateTotalTripCost()).to.eq(7150);
   })
 
+  it('should be able to determine if a trip is current or past', () => {
+    trip1.determineIfTripIsPastOrCurrent(trip1.date, trip1.duration);
+    expect(trip1.status).to.eq("Archived");
+    trip2.determineIfTripIsPastOrCurrent(trip2.date, trip2.duration);
+    expect(trip2.status).to.eq("Current");
 
-
+  })
 
 });

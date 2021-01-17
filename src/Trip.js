@@ -21,6 +21,15 @@ class Trip {
     const totalCost = Math.floor((totalLodgingExpenses + totalFlightExpenses) * 1.1);
     return totalCost;
   }
+
+  determineIfTripIsPastOrCurrent(startDate, tripDuration) {
+    console.log(this);
+    if (Date.now() > Date.parse(startDate) && Date.now() < Date.parse(startDate) + (tripDuration * 86400000)) {
+      this.status = "Current";
+    } else if (Date.parse(startDate) + (tripDuration * 86400000) < Date.now()) {
+      this.status = "Archived"
+    }
+  }
 }
 
 module.exports = Trip;

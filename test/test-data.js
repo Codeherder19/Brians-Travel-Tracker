@@ -479,7 +479,7 @@ let trips = {
             "userID": 1,
             "destinationID": 8,
             "travelers": 6,
-            "date": "2021/02/07",
+            "date": "2021/01/15",
             "duration": 4,
             "status": "approved",
             "suggestedActivities": []
