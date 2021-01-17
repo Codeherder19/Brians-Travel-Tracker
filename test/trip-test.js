@@ -21,7 +21,14 @@ describe('Destinations', () => {
     expect(Trip).to.be.a('function');
   })
 
-  it('should initialize with a userID')
+  it('should initialize with a userID', () => {
+    expect(trip1.userID).to.eql(1);
+    expect(trip2.userID).to.eql(1);
+  })
 
+  it('should initialize with a destination id', () => {
+    expect(trip1.destinationID).to.eql(2);
+    expect(trip2.destinationID).to.eql(8);
+  })
 
 });
