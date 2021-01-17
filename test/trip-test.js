@@ -1,7 +1,9 @@
 import { expect } from 'chai';
 
 import Trip from '../src/Trip';
+import Destinations from '../src/Destinations';
 
+import { trips } from './test-data';
 import { destinations } from './test-data';
 
 describe('Destinations', () => {
@@ -10,8 +12,16 @@ describe('Destinations', () => {
   let trip2;
 
   beforeEach(() => {
-     tripDestinations = destinations.destinations.map(destination => new Destination(destination));
-     trip1 = tripDestinations[0];
-     trip2 = tripDestinations[7];
+     tripDestinations = new Destinations(destinations);
+     trip1 = new Trip(trips.trips[1], tripDestinations);
+     trip2 = new Trip(trips.trips[7], tripDestinations);
   });
+
+  it('should be a function', () => {
+    expect(Trip).to.be.a('function');
+  })
+
+  it('should initialize with a userID')
+
+
 });
