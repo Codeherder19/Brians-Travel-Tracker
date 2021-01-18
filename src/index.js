@@ -30,7 +30,7 @@ let selectedDestination;
 window.addEventListener("load", loadAllDataFromAPI);
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
 calculateTripCostButton.addEventListener('click', calculateTotalCostOfTripToBeBooked)
-// tripStartDateSelection.addEventListener('click', setMinimumDateAttributeToTodaysDate)
+tripStartDateSelection.addEventListener('click', domUpdates.disableSelectionOfPastDates())
 
 function loadAllDataFromAPI() {
   Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(9)])
@@ -65,7 +65,7 @@ function instantiateNewTripObject() {
 
 function selectDestinationPriorToBooking() {
   selectedDestination = destinations.getDestinationById(parseInt(event.target.id));
-  console.log(selectedDestination);
+  console.log(selectedDestination)
 }
 
 const displayAllPossibleDestinations = allDestinations => {
