@@ -27,7 +27,12 @@ function loadAllDataFromAPI() {
     domUpdates.displayNameOfCurrentUser(traveler);
     displayAllUserTrips(traveler);
     domUpdates.displayTotalSpentForTripsInAYear(2021, traveler);
+    displayAllPossibleDestinations(destinations)
   });
+}
+
+function displayAllPossibleDestinations(allDestinations) {
+  allDestinations.allDestinationData.forEach(destination => domUpdates.displayDestination(destination.id, destination.destination, destination.image, destination.alt))
 }
 
 function displayAllUserTrips(user) {
