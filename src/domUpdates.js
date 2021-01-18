@@ -1,3 +1,5 @@
+const moment = require("moment")
+
 const domUpdates = {
 
 displayNameOfCurrentUser(user) {
@@ -28,10 +30,26 @@ displayDestination(destinationID, destinationName, destinationImage, imageAltTex
   const destinationHTML = `<div class="destination-card">
     <p class="destination-name">${destinationName}</p>
     <img src=${destinationImage} class="trip-image" alt=${imageAltText}>
-    <button class="reserve-button" id=${destinationID}>Reserve</button>
+    <button class="reserve-button" type="checked" id=${destinationID}>Reserve</button>
     </div>`;
     allDestinations.insertAdjacentHTML('afterbegin', destinationHTML);
 },
+
+disableSelectionOfPastDates() {
+  let calendar = document.querySelector('#date');
+  let todaysDate = moment().format().split('T')[0];
+  calendar.setAttribute("min", todaysDate)
+},
+
+displayCostOfTrip(tripCost, tripName) {
+  let costDisplay = document.querySelector('.money-spent');
+  costDisplay.innerText = `Your total cost for this trip to ${tripName} will be $${tripCost} (this includes a 10% agency fee)`;
+},
+
+displayErrorMessageIfAnyInputHasNoValue() {
+  let costDisplay = document.querySelector('.money-spent');
+  costDisplay.innerText = "Please select a valid date, trip duration, and number of travelers for this trip!";
+}
 
 }
 
