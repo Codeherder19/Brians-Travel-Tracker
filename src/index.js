@@ -24,9 +24,6 @@ function loadAllDataFromAPI() {
     destinations = generateAllDestinations(values[0]);
     allTrips = generateAllTrips(values[1], destinations);
     traveler = generateTraveler(values[2], allTrips);
-    console.log(destinations);
-    console.log(allTrips);
-    console.log(traveler);
   });
 }
 
