@@ -23,11 +23,10 @@ class Trip {
   }
 
   determineIfTripIsPastOrCurrent(startDate, tripDuration) {
-    console.log(this);
-    if (Date.now() > Date.parse(startDate) && Date.now() < Date.parse(startDate) + (tripDuration * 86400000)) {
-      this.status = "Current";
-    } else if (Date.parse(startDate) + (tripDuration * 86400000) < Date.now()) {
-      this.status = "Archived"
+    if (Date.now() > Date.parse(startDate) && Date.now() < Date.parse(startDate) + (tripDuration * 86400000) && this.status !== "pending") {
+      this.status = "current";
+    } else if (Date.parse(startDate) + (tripDuration * 86400000) < Date.now() && this.status !== "pending") {
+      this.status = "archived"
     }
   }
 }
