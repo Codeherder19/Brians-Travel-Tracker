@@ -48,23 +48,23 @@ function selectDestinationPriorToBooking(event) {
   selectedDestination = destinations.getDestinationById(event.target.id);
 }
 
-function displayAllPossibleDestinations(allDestinations) {
+const displayAllPossibleDestinations = allDestinations => {
   allDestinations.allDestinationData.forEach(destination => domUpdates.displayDestination(destination.id, destination.destination, destination.image, destination.alt))
 }
 
-function displayAllUserTrips(user) {
+const displayAllUserTrips = user => {
   user.trips.forEach(trip => domUpdates.displayUserTrip(trip.destinationName, trip.numberOfTravelers, trip.duration, trip.date, trip.tripImage, trip.imageAltText, trip.status))
 }
 
 
-function generateAllDestinations(allDestinations) {
+const generateAllDestinations = allDestinations => {
   return new Destinations(allDestinations);
 }
 
-function generateAllTrips(tripData, destinationsObject) {
+const generateAllTrips = (tripData, destinationsObject) => {
   return tripData.trips.map(trip => new Trip(trip, destinationsObject));
 }
 
-function generateTraveler(currentUser, allTripObjects) {
+const generateTraveler = (currentUser, allTripObjects) => {
   return new Traveler(currentUser, allTripObjects);
 }
