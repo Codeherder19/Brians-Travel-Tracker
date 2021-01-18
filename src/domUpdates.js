@@ -1,5 +1,3 @@
-import Traveler from './Traveler';
-
 const domUpdates = {
 
 displayNameOfCurrentUser(user) {
@@ -17,15 +15,23 @@ displayUserTrip(tripName, tripTravelers, tripDuration, tripStartDate, tripImage,
     <img src=${tripImage} class="trip-image" alt=${imageAltText}>
     <p>Status: ${tripStatus.toUpperCase()}</p>
     </div>`;
-    travelersTripSection.insertAdjacentHTML("afterbegin", tripHTML);
+    travelersTripSection.insertAdjacentHTML('afterbegin', tripHTML);
 },
 
 displayTotalSpentForTripsInAYear(year, traveler) {
   const displayedMoneySpent = document.querySelector('.money-spent');
   displayedMoneySpent.innerText = `You have spent $${traveler.calculateTotalSpentOnTripsForGivenYear(year)} in ${year}. (This includes a 10% agency fee on all trips).`
-}
+},
 
-
+displayDestination(destinationID, destinationName, destinationImage, imageAltText) {
+  const allDestinations = document.querySelector('.all-destinations');
+  const destinationHTML = `<div class="destination-card" id=${destinationID}>
+    <p class="destination-name">${destinationName}</p>
+    <img src=${destinationImage} class="trip-image" alt=${imageAltText}>
+    <button class="reserve-button">Reserve</button>
+    </div>`;
+    allDestinations.insertAdjacentHTML('afterbegin', destinationHTML);
+},
 
 }
 
