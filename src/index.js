@@ -29,7 +29,7 @@ let selectedDestination;
 // LOAD DATA MODEL HERE
 window.addEventListener("load", loadAllDataFromAPI);
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
-calculateTripCostButton.addEventListener('click', calculateTotalCostOfTripToBeBooked)
+calculateTripCostButton.addEventListener('click', displayTripCostEstimateMessage)
 tripStartDateSelection.addEventListener('click', domUpdates.disableSelectionOfPastDates())
 
 function loadAllDataFromAPI() {
@@ -45,11 +45,10 @@ function loadAllDataFromAPI() {
   });
 }
 
-function calculateTotalCostOfTripToBeBooked() {
+function addTotalCostOfTripToTripToBeBooked() {
   let tripToBeBooked = instantiateNewTripObject();
-  console.log(tripToBeBooked);
-  console.log(tripToBeBooked.calculateTotalTripCost());
-  return tripToBeBooked.calculateTotalTripCost();
+  tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
+  return tripToBeBooked;
 }
 
 function instantiateNewTripObject() {
@@ -61,6 +60,15 @@ function instantiateNewTripObject() {
   possibleTrip.duration = tripDurationSelection.value;
   possibleTrip.status = 'pending';
   return possibleTrip;
+}
+
+function displayTripCostEstimateMessage() {
+  let trip = addTotalCostOfTripToTripToBeBooked();
+  if (trip.duration && trip.date && trip.numberOfTravelers) {
+  domUpdates.displayCostOfTrip(trip.totalCostOfTrip, trip.destinationName)
+} else {
+  domUpdates.displayErrorMessageIfAnyInputHasNoValue();
+}
 }
 
 function selectDestinationPriorToBooking() {
