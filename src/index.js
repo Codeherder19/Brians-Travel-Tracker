@@ -43,9 +43,9 @@ function loadAllDataFromAPI() {
   });
 }
 
-function selectDestinationPriorToBooking(event) {
-  console.log(event.target.id);
-  selectedDestination = destinations.getDestinationById(event.target.id);
+function selectDestinationPriorToBooking() {
+  selectedDestination = destinations.getDestinationById(parseInt(event.target.id));
+  console.log(selectedDestination)
 }
 
 const displayAllPossibleDestinations = allDestinations => {
