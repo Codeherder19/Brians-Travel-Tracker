@@ -14,6 +14,7 @@ const submitTripRequestButton = document.querySelector('.submit');
 const tripStartDateInputField = document.querySelector('#date');
 const tripDurationDropDownMenu = document.querySelector('#duration');
 const numberOfTravelersDropDownMenu = document.querySelector('#travelers');
+const allDestinationsSection = document.querySelector('.all-destinations');
 
 // ADD EVENT LISTENERS HERE
 
@@ -23,9 +24,11 @@ const numberOfTravelersDropDownMenu = document.querySelector('#travelers');
 let destinations;
 let allTrips;
 let traveler;
+let selectedDestination;
 
 // LOAD DATA MODEL HERE
 window.addEventListener("load", loadAllDataFromAPI);
+allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
 
 function loadAllDataFromAPI() {
   Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(9)])
@@ -40,6 +43,10 @@ function loadAllDataFromAPI() {
   });
 }
 
+function selectDestinationPriorToBooking(event) {
+  console.log(event.target.id);
+  selectedDestination = destinations.getDestinationById(event.target.id);
+}
 
 function displayAllPossibleDestinations(allDestinations) {
   allDestinations.allDestinationData.forEach(destination => domUpdates.displayDestination(destination.id, destination.destination, destination.image, destination.alt))
