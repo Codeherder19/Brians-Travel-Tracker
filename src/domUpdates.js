@@ -9,8 +9,8 @@ displayNameOfCurrentUser(user) {
 },
 
 displayUserTrip(tripName, tripTravelers, tripDuration, tripStartDate, tripImage, imageAltText, tripStatus) {
-  let travelersTripSection = document.querySelector('.my-trips');
-  let tripHTML = `<div class="trip-card">
+  const travelersTripSection = document.querySelector('.my-trips');
+  const tripHTML = `<div class="trip-card">
     <p class="destination-name">${tripName}</p>
     <p class="number-of-travelers">Travelers: ${tripTravelers}</p>
     <p class="date-and-duration">${tripDuration} day trip from ${tripStartDate}.</p>
@@ -19,6 +19,11 @@ displayUserTrip(tripName, tripTravelers, tripDuration, tripStartDate, tripImage,
     </div>`;
     travelersTripSection.insertAdjacentHTML("afterbegin", tripHTML);
 },
+
+displayTotalSpentForTripsInAYear(year, traveler) {
+  const displayedMoneySpent = document.querySelector('.money-spent');
+  displayedMoneySpent.innerText = `You have spent $${traveler.calculateTotalSpentOnTripsForGivenYear(year)} in ${year}. (This includes a 10% agency fee on all trips).`
+}
 
 
 
