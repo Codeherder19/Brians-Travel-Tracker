@@ -19,14 +19,20 @@ let traveler;
 window.addEventListener("load", loadAllDataFromAPI);
 
 function loadAllDataFromAPI() {
-  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(1)])
+  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(30)])
   .then(values => {
     destinations = generateAllDestinations(values[0]);
     allTrips = generateAllTrips(values[1], destinations);
     traveler = generateTraveler(values[2], allTrips);
     domUpdates.displayNameOfCurrentUser(traveler);
+    displayAllUserTrips(traveler);
   });
 }
+
+function displayAllUserTrips(user) {
+  user.trips.forEach(trip => domUpdates.displayUserTrip(trip.destinationName, trip.numberOfTravelers, trip.duration, trip.date, trip.tripImage, trip.imageAltText, trip.status))
+}
+
 
 function generateAllDestinations(allDestinations) {
   return new Destinations(allDestinations);
