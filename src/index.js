@@ -29,7 +29,7 @@ let selectedDestination;
 // LOAD DATA MODEL HERE
 window.addEventListener("load", loadAllDataFromAPI);
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
-calculateTripCostButton.addEventListener('click', calculateTotalCostOfTrip)
+calculateTripCostButton.addEventListener('click', calculateTotalCostOfTripToBeBooked)
 // tripStartDateSelection.addEventListener('click', setMinimumDateAttributeToTodaysDate)
 
 function loadAllDataFromAPI() {
@@ -45,7 +45,14 @@ function loadAllDataFromAPI() {
   });
 }
 
-function calculateTotalCostOfTrip() {
+function calculateTotalCostOfTripToBeBooked() {
+  let tripToBeBooked = instantiateNewTripObject();
+  console.log(tripToBeBooked);
+  console.log(tripToBeBooked.calculateTotalTripCost());
+  return tripToBeBooked.calculateTotalTripCost();
+}
+
+function instantiateNewTripObject() {
   let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
   let possibleTrip = new Trip(tripData, destinations);
   possibleTrip.userID = traveler.id;
@@ -53,11 +60,12 @@ function calculateTotalCostOfTrip() {
   possibleTrip.date = tripStartDateSelection.value;
   possibleTrip.duration = tripDurationSelection.value;
   possibleTrip.status = 'pending';
-  const totalTripCost = possibleTrip.calculateTotalTripCost();
+  return possibleTrip;
 }
 
 function selectDestinationPriorToBooking() {
   selectedDestination = destinations.getDestinationById(parseInt(event.target.id));
+  console.log(selectedDestination);
 }
 
 const displayAllPossibleDestinations = allDestinations => {
