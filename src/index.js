@@ -8,6 +8,15 @@ import Trip from './Trip.js';
 import Traveler from './Traveler';
 
 // QUERY SELECTORS HERE
+const reserveTripButtons = document.querySelectorAll('.reserve-button');
+const calculateTripCostButton = document.querySelector('.calculate-cost');
+const submitTripRequestButton = document.querySelector('.submit');
+const tripStartDateInputField = document.querySelector('#date');
+const tripDurationDropDownMenu = document.querySelector('#duration');
+const numberOfTravelersDropDownMenu = document.querySelector('#travelers');
+
+// ADD EVENT LISTENERS HERE
+
 
 // GLOBAL OBJECTS HERE
 
@@ -27,9 +36,10 @@ function loadAllDataFromAPI() {
     domUpdates.displayNameOfCurrentUser(traveler);
     displayAllUserTrips(traveler);
     domUpdates.displayTotalSpentForTripsInAYear(2021, traveler);
-    displayAllPossibleDestinations(destinations)
+    displayAllPossibleDestinations(destinations);
   });
 }
+
 
 function displayAllPossibleDestinations(allDestinations) {
   allDestinations.allDestinationData.forEach(destination => domUpdates.displayDestination(destination.id, destination.destination, destination.image, destination.alt))
