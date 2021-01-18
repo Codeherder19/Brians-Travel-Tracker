@@ -19,13 +19,14 @@ let traveler;
 window.addEventListener("load", loadAllDataFromAPI);
 
 function loadAllDataFromAPI() {
-  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(30)])
+  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(9)])
   .then(values => {
     destinations = generateAllDestinations(values[0]);
     allTrips = generateAllTrips(values[1], destinations);
     traveler = generateTraveler(values[2], allTrips);
     domUpdates.displayNameOfCurrentUser(traveler);
     displayAllUserTrips(traveler);
+    domUpdates.displayTotalSpentForTripsInAYear(2021, traveler);
   });
 }
 
