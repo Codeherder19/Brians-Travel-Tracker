@@ -15,7 +15,7 @@ displayUserTrip(tripName, tripTravelers, tripDuration, tripStartDate, tripImage,
     <p class="number-of-travelers">Travelers: ${tripTravelers}</p>
     <p class="date-and-duration">${tripDuration} day trip from ${tripStartDate}.</p>
     <img src=${tripImage} class="trip-image" alt=${imageAltText}>
-    <p>Status: ${tripStatus}</p>
+    <p>Status: ${tripStatus.toUpperCase()}</p>
     </div>`;
     travelersTripSection.insertAdjacentHTML("afterbegin", tripHTML);
 },
