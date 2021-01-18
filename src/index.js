@@ -1,7 +1,7 @@
 //IMPORT FILES HERE
 import './css/base.scss';
 import fetchRequests from './fetchRequests';
-// import domUpdates from './domUpdates';
+import domUpdates from './domUpdates';
 
 import Destinations from './Destinations.js';
 import Trip from './Trip.js';
@@ -24,6 +24,7 @@ function loadAllDataFromAPI() {
     destinations = generateAllDestinations(values[0]);
     allTrips = generateAllTrips(values[1], destinations);
     traveler = generateTraveler(values[2], allTrips);
+    domUpdates.displayNameOfCurrentUser(traveler);
   });
 }
 
