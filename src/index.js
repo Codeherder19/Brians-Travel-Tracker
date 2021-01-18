@@ -11,9 +11,9 @@ import Traveler from './Traveler';
 const reserveTripButtons = document.querySelectorAll('.reserve-button');
 const calculateTripCostButton = document.querySelector('.calculate-cost');
 const submitTripRequestButton = document.querySelector('.submit');
-const tripStartDateInputField = document.querySelector('#date');
-const tripDurationDropDownMenu = document.querySelector('#duration');
-const numberOfTravelersDropDownMenu = document.querySelector('#travelers');
+const tripStartDateSelection = document.querySelector('#date');
+const tripDurationSelection = document.querySelector('#duration');
+const numberOfTravelersSelection = document.querySelector('#travelers');
 const allDestinationsSection = document.querySelector('.all-destinations');
 
 // ADD EVENT LISTENERS HERE
@@ -29,6 +29,8 @@ let selectedDestination;
 // LOAD DATA MODEL HERE
 window.addEventListener("load", loadAllDataFromAPI);
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
+calculateTripCostButton.addEventListener('click', calculateTotalCostOfTrip)
+// tripStartDateSelection.addEventListener('click', setMinimumDateAttributeToTodaysDate)
 
 function loadAllDataFromAPI() {
   Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(9)])
@@ -43,9 +45,19 @@ function loadAllDataFromAPI() {
   });
 }
 
+function calculateTotalCostOfTrip() {
+  let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
+  let possibleTrip = new Trip(tripData, destinations);
+  possibleTrip.userID = traveler.id;
+  possibleTrip.numberOfTravelers = numberOfTravelersSelection.value;
+  possibleTrip.date = tripStartDateSelection.value;
+  possibleTrip.duration = tripDurationSelection.value;
+  possibleTrip.status = 'pending';
+  const totalTripCost = possibleTrip.calculateTotalTripCost();
+}
+
 function selectDestinationPriorToBooking() {
   selectedDestination = destinations.getDestinationById(parseInt(event.target.id));
-  console.log(selectedDestination)
 }
 
 const displayAllPossibleDestinations = allDestinations => {
