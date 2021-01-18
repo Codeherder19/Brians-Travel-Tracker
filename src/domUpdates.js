@@ -25,10 +25,10 @@ displayTotalSpentForTripsInAYear(year, traveler) {
 
 displayDestination(destinationID, destinationName, destinationImage, imageAltText) {
   const allDestinations = document.querySelector('.all-destinations');
-  const destinationHTML = `<div class="destination-card" id=${destinationID}>
+  const destinationHTML = `<div class="destination-card">
     <p class="destination-name">${destinationName}</p>
     <img src=${destinationImage} class="trip-image" alt=${imageAltText}>
-    <button class="reserve-button">Reserve</button>
+    <button class="reserve-button" id=${destinationID}>Reserve</button>
     </div>`;
     allDestinations.insertAdjacentHTML('afterbegin', destinationHTML);
 },
