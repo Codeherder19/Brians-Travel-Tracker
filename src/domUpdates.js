@@ -48,7 +48,7 @@ displayCostOfTrip(tripCost, tripName) {
 
 displayErrorMessageIfAnyInputHasNoValue() {
   let costDisplay = document.querySelector('.money-spent');
-  costDisplay.innerText = "Please select a valid date, trip duration, and number of travelers for this trip!";
+  costDisplay.innerText = "Please select a valid destination, date, trip duration, and number of travelers for this trip!";
 }
 
 }
