@@ -49,6 +49,11 @@ displayCostOfTrip(tripCost, tripName) {
 displayErrorMessageIfAnyInputHasNoValue() {
   let costDisplay = document.querySelector('.money-spent');
   costDisplay.innerText = "Please select a valid destination, date, trip duration, and number of travelers for this trip!";
+},
+
+displayMessageUponSuccessfulTripRequest(tripName) {
+  let costDisplay = document.querySelector('.money-spent');
+  costDisplay.innerText = `Your trip to ${tripName} has been successfully booked and is pending approval! Check My Trips for updates!`;
 }
 
 }
