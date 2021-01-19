@@ -19,22 +19,20 @@ const numberOfTravelersSelection = document.querySelector('#travelers');
 const allDestinationsSection = document.querySelector('.all-destinations');
 
 // ADD EVENT LISTENERS HERE
-
-
-// GLOBAL OBJECTS HERE
-
-let destinations;
-let allTrips;
-let traveler;
-let selectedDestination;
-
-// LOAD DATA MODEL HERE
 window.addEventListener("load", loadAllDataFromAPI);
 submitTripRequestButton.addEventListener('click', loadUpdatedTripsData)
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
 calculateTripCostButton.addEventListener('click', displayTripCostEstimateMessage)
 tripStartDateSelection.addEventListener('click', domUpdates.disableSelectionOfPastDates())
 
+
+// GLOBAL OBJECTS HERE
+let destinations;
+let allTrips;
+let traveler;
+let selectedDestination;
+
+// LOAD DATA MODEL HERE
 function loadAllDataFromAPI() {
   Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(10)])
   .then(values => {
@@ -57,7 +55,6 @@ function loadUpdatedTripsData() {
   })
 
   function updateTravelersTrips() {
-    // let bookedTrip = allTrips.find(trip => trip.id === idOfPendingTrip);
     addPendingTripToTravelersTrips(bookedTrip);
     displayAllUserTrips(traveler);
     domUpdates.displayMessageUponSuccessfulTripRequest(bookedTrip.destinationName);
@@ -106,7 +103,6 @@ function instantiateNewTripObject() {
 
 function selectDestinationPriorToBooking() {
   selectedDestination = destinations.getDestinationById(parseInt(event.target.id));
-  console.log(selectedDestination)
 }
 
 const displayAllPossibleDestinations = allDestinations => {
@@ -129,3 +125,5 @@ const generateAllTrips = (tripData, destinationsObject) => {
 const generateTraveler = (currentUser, allTripObjects) => {
   return new Traveler(currentUser, allTripObjects);
 }
+
+// DOM UPDATES
