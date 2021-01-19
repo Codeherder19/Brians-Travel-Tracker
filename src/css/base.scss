@@ -79,7 +79,8 @@
 
   #duration,
   #travelers {
-    width: 5rem;
+    width: 9rem;
+    margin-right: -2rem;
   }
 
   h1 {
@@ -94,7 +95,7 @@
   }
 
   button {
-    border-radius: 1rem;
+    border-radius: .2rem;
     margin: 1rem;
     color: #ffffff;
     background-color: green;
@@ -110,6 +111,9 @@
 
   .calculate-cost,
   .submit {
+    border-radius: 1rem;
+    margin: 1rem;
+    color: #ffffff;
     background-color: #3383B4;
     height: 3rem;
     width: 8rem;
