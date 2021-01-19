@@ -24,7 +24,6 @@
     flex-direction: column;
     align-items: center;
     background-color: #325084;
-    // border: solid black;
   }
 
   .my-trips {
@@ -41,7 +40,6 @@
     flex-direction: column;
     align-items: center;
     background-color: #325084;
-    // border: solid black;
     grid-area: main;
   }
 
@@ -84,7 +82,7 @@
   }
 
   h1 {
-    color: #ffffff;
+    color: #194A9B;
     font-size: 3rem;
   }
 
@@ -95,12 +93,17 @@
   }
 
   button {
-    border-radius: .2rem;
+    border-radius: .3rem;
     margin: 1rem;
-    color: #ffffff;
+    color: #194A9B;
     background-color: green;
   }
 
+  .reserve-button {
+    width: 6rem;
+    height: 3rem;
+    color: #ffffff;
+  }
   .date-and-duration {
     font-size: .7rem;
   }
@@ -113,11 +116,12 @@
   .submit {
     border-radius: 1rem;
     margin: 1rem;
-    color: #ffffff;
-    background-color: #3383B4;
+    color: #194A9B;
+    background-color: #F4EF0E ;
     height: 3rem;
     width: 8rem;
   }
+
 
   .destination-card {
     display:flex;
