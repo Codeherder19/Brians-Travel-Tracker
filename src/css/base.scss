@@ -6,7 +6,50 @@
 
   body {
     font-family: courier,arial,helvetica;
-    display: grid;
+  }
+
+  .login-wrapper {
+    @include set-height-and-width(90vh, 100vw);
+    @include flex-display(column, center);
+  }
+
+  .login-welcome-message {
+    @include font-size(1.5rem);
+    padding: 3rem;
+  }
+
+  .login-form {
+    background-color: $blue-steel;
+    border: $solid-black-border;
+    @include flex-display(column, center);
+    @include set-height-and-width(20rem, 50rem)
+  }
+
+  .form-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: $gold-card;
+    @include set-height-and-width(5rem, 50%);
+  }
+
+  .login-submit {
+    @include font-size(1.5rem);
+  }
+
+  .input-heading {
+    display: inline;
+    color: $blue-steel;
+  }
+
+  .login-header {
+    @include set-height-and-width(10rem, 50rem)
+  }
+
+  .full-content-wrapper {
+    font-family: courier,arial,helvetica;
+    display: none;
     height: 100vh;
     grid-template-columns: .2fr 1.8fr;
     grid-template-rows:  .1fr 1.9fr;
@@ -85,13 +128,14 @@
   }
 
   h2 {
-    @include font-size(2.5rem);
+    @include font-size(1rem);
+    color: $blue-steel;
   }
 
   .trips-header,
   .money-spent,
   label {
-    color: #ffffff;
+    color: #fff;
   }
 
   button {
@@ -104,7 +148,7 @@
   .reserve-button {
     width: 6rem;
     height: 3rem;
-    color: #ffffff;
+    color: #fff;
   }
   .date-and-duration {
     @include font-size(.7rem);
