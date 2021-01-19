@@ -1,4 +1,6 @@
 //IMPORT FILES HERE
+const moment = require("moment")
+
 import './css/base.scss';
 import fetchRequests from './fetchRequests';
 import domUpdates from './domUpdates';
@@ -8,18 +10,31 @@ import Trip from './Trip.js';
 import Traveler from './Traveler';
 
 // QUERY SELECTORS HERE
+const reserveTripButtons = document.querySelectorAll('.reserve-button');
+const calculateTripCostButton = document.querySelector('.calculate-cost');
+const submitTripRequestButton = document.querySelector('.submit');
+const tripStartDateSelection = document.querySelector('#date');
+const tripDurationSelection = document.querySelector('#duration');
+const numberOfTravelersSelection = document.querySelector('#travelers');
+const allDestinationsSection = document.querySelector('.all-destinations');
+
+// ADD EVENT LISTENERS HERE
+window.addEventListener("load", loadAllDataFromAPI);
+submitTripRequestButton.addEventListener('click', loadUpdatedTripsData)
+allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
+calculateTripCostButton.addEventListener('click', displayTripCostEstimateMessage)
+tripStartDateSelection.addEventListener('click', domUpdates.disableSelectionOfPastDates())
+
 
 // GLOBAL OBJECTS HERE
-
 let destinations;
 let allTrips;
 let traveler;
+let selectedDestination;
 
 // LOAD DATA MODEL HERE
-window.addEventListener("load", loadAllDataFromAPI);
-
 function loadAllDataFromAPI() {
-  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(9)])
+  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(10)])
   .then(values => {
     destinations = generateAllDestinations(values[0]);
     allTrips = generateAllTrips(values[1], destinations);
@@ -27,22 +42,88 @@ function loadAllDataFromAPI() {
     domUpdates.displayNameOfCurrentUser(traveler);
     displayAllUserTrips(traveler);
     domUpdates.displayTotalSpentForTripsInAYear(2021, traveler);
+    displayAllPossibleDestinations(destinations);
   });
 }
 
-function displayAllUserTrips(user) {
+function loadUpdatedTripsData() {
+  let bookedTrip = instantiateNewTripObject();
+  Promise.all([fetchRequests.postTrip(bookedTrip), fetchRequests.getTrips()])
+  .then(values => {
+    allTrips = generateAllTrips(values[1], destinations);
+    updateTravelersTrips();
+  })
+
+  function updateTravelersTrips() {
+    addPendingTripToTravelersTrips(bookedTrip);
+    displayAllUserTrips(traveler);
+    domUpdates.displayMessageUponSuccessfulTripRequest(bookedTrip.destinationName);
+  }
+
+function addPendingTripToTravelersTrips(pendingTrip) {
+  traveler.trips.push(pendingTrip)
+}
+
+}
+
+function displayTripCostEstimateMessage() {
+  if (!returnTripWithTotalCostProperty().duration || !returnTripWithTotalCostProperty().date || !returnTripWithTotalCostProperty().numberOfTravelers || !selectedDestination) {
+    domUpdates.displayErrorMessageIfAnyInputHasNoValue();
+  } else {
+    let trip = returnTripWithTotalCostProperty();
+    domUpdates.displayCostOfTrip(trip.totalCostOfTrip, trip.destinationName)
+  }
+}
+
+function returnTripWithTotalCostProperty() {
+  let tripToBeBooked = instantiateNewTripObject();
+  if(tripToBeBooked) {
+  tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
+  return tripToBeBooked;
+}
+}
+
+function instantiateNewTripObject() {
+  if (selectedDestination) {
+  let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
+  let possibleTrip = new Trip(tripData, destinations);
+  let formattedTripDate = moment(tripStartDateSelection.value).format('YYYY/MM/DD');
+  possibleTrip.id = allTrips.length + 1;
+  possibleTrip.userID = traveler.id;
+  possibleTrip.numberOfTravelers = numberOfTravelersSelection.value;
+  possibleTrip.date = formattedTripDate;
+  possibleTrip.duration = tripDurationSelection.value;
+  possibleTrip.status = 'pending';
+  return possibleTrip;
+} else {
+  domUpdates.displayErrorMessageIfAnyInputHasNoValue()
+}
+}
+
+
+function selectDestinationPriorToBooking() {
+  selectedDestination = destinations.getDestinationById(parseInt(event.target.id));
+}
+
+const displayAllPossibleDestinations = allDestinations => {
+  allDestinations.allDestinationData.forEach(destination => domUpdates.displayDestination(destination.id, destination.destination, destination.image, destination.alt))
+}
+
+const displayAllUserTrips = user => {
   user.trips.forEach(trip => domUpdates.displayUserTrip(trip.destinationName, trip.numberOfTravelers, trip.duration, trip.date, trip.tripImage, trip.imageAltText, trip.status))
 }
 
 
-function generateAllDestinations(allDestinations) {
+const generateAllDestinations = allDestinations => {
   return new Destinations(allDestinations);
 }
 
-function generateAllTrips(tripData, destinationsObject) {
+const generateAllTrips = (tripData, destinationsObject) => {
   return tripData.trips.map(trip => new Trip(trip, destinationsObject));
 }
 
-function generateTraveler(currentUser, allTripObjects) {
+const generateTraveler = (currentUser, allTripObjects) => {
   return new Traveler(currentUser, allTripObjects);
 }
+
+// DOM UPDATES

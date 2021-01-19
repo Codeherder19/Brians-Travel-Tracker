@@ -21,66 +21,20 @@
         <p class="money-spent"></p>
         <div class="form-wrapper">
           <div class="input-wrapper">
-            <label for="Date">Date of Trip</label>
-            <input placeholder="Date" type="text" id="Date" name="Date"></input>
+            <label for="date">Date of Trip</label>
+            <input placeholder="Date" type="date" id="date" name="Date"></input>
           </div>
           <div class="input-wrapper">
-            <label for="Duration">Duration</label>
-            <input placeholder="Duration" type="text" id="Duration" name="Duration"></input>
+            <label for="duration">Duration</label>
+            <input placeholder="Duration" type="number" max="50" min="1" step="1" id="duration" name="Duration"></input>
           </div>
           <div class="input-wrapper">
-            <label for="Travelers">Travelers</label>
-            <input placeholder="Travelers" type"text" id="Travelers" name="Travelers"></input>
+            <label for="travelers">Travelers</label>
+            <input placeholder="Travelers" type="number" max="50" min="1" step="1" id="travelers" name="Travelers"></input>
           </div>
         </div>
       </form>
-      <section>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder
-          </div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
-        <div class="destination-card">
-          <p class="destination-name">Destination, Name</p>
-          <div class="trip-image">Img placeholder</div>
-          <button class="reserve-button">Reserve</button>
-        </div>
+      <section class="all-destinations">
       </section>
       <div class="trip-submit-wrapper">
         <button class="calculate-cost">Calculate Cost</button>

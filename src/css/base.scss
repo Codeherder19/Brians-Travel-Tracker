@@ -54,7 +54,7 @@
 
   section {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
     overflow-y: scroll;
     grid-gap: 1rem;
     height: 40rem;
@@ -77,6 +77,12 @@
     width: 20rem;
   }
 
+  #duration,
+  #travelers {
+    width: 9rem;
+    margin-right: -2rem;
+  }
+
   h1 {
     color: #ffffff;
     font-size: 3rem;
@@ -88,9 +94,8 @@
     color: #ffffff;
   }
 
-
   button {
-    border-radius: 1rem;
+    border-radius: .2rem;
     margin: 1rem;
     color: #ffffff;
     background-color: green;
@@ -106,6 +111,9 @@
 
   .calculate-cost,
   .submit {
+    border-radius: 1rem;
+    margin: 1rem;
+    color: #ffffff;
     background-color: #3383B4;
     height: 3rem;
     width: 8rem;
