@@ -17,14 +17,20 @@ const tripStartDateSelection = document.querySelector('#date');
 const tripDurationSelection = document.querySelector('#duration');
 const numberOfTravelersSelection = document.querySelector('#travelers');
 const allDestinationsSection = document.querySelector('.all-destinations');
+const submitUsernameAndPassword = document.querySelector('.login-submit');
+const usernameInput = document.querySelector('.username');
+const passwordInput = document.querySelector('.password');
+const mainPage = document.querySelector('.full-content-wrapper');
+const loginForm = document.querySelector('.login-wrapper');
+
 
 // ADD EVENT LISTENERS HERE
-window.addEventListener("load", loadAllDataFromAPI);
+// window.addEventListener("load", loadAllDataFromAPI);
 submitTripRequestButton.addEventListener('click', loadUpdatedTripsData)
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
 calculateTripCostButton.addEventListener('click', displayTripCostEstimateMessage)
 tripStartDateSelection.addEventListener('click', domUpdates.disableSelectionOfPastDates())
-
+submitUsernameAndPassword.addEventListener('click', validateLoginForm)
 
 // GLOBAL OBJECTS HERE
 let destinations;
@@ -33,8 +39,8 @@ let traveler;
 let selectedDestination;
 
 // LOAD DATA MODEL HERE
-function loadAllDataFromAPI() {
-  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(10)])
+function loadAllDataFromAPI(id) {
+  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(id)])
   .then(values => {
     destinations = generateAllDestinations(values[0]);
     allTrips = generateAllTrips(values[1], destinations);
@@ -44,6 +50,21 @@ function loadAllDataFromAPI() {
     domUpdates.displayTotalSpentForTripsInAYear(2021, traveler);
     displayAllPossibleDestinations(destinations);
   });
+}
+
+function validateLoginForm(event) {
+  event.preventDefault(event);
+  let userIDNumber = parseInt(usernameInput.value.toLowerCase().split('traveler')[1]);
+  if (usernameInput.value) {
+    if (!userIDNumber || userIDNumber < 1 || userIDNumber > 50 || passwordInput.value !== 'traveler2020') {
+      domUpdates.displayLoginErrorMessage();
+    } else {
+      console.log("success");
+      loginForm.style.display = 'none';
+      mainPage.style.display = 'grid';
+      loadAllDataFromAPI(userIDNumber);
+    }
+  }
 }
 
 function loadUpdatedTripsData() {
