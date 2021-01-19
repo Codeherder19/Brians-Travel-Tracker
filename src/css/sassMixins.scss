@@ -1,0 +1,19 @@
+@mixin flex-display($direction, $content) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: center;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+@mixin set-height-and-width($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin set-width-only($width) {
+  width: $width;
+}
