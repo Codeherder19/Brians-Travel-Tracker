@@ -45,7 +45,7 @@ const fetchRequests = {
         "id": trip.id,
         "userID": trip.userID,
         "destinationID": trip.destinationID,
-        "travelers": trip.travelers,
+        "travelers": trip.numberOfTravelers,
         "date": trip.date,
         "duration": trip.duration,
         "status": trip.status,
