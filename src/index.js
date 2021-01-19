@@ -1,4 +1,6 @@
 //IMPORT FILES HERE
+const moment = require("moment")
+
 import './css/base.scss';
 import fetchRequests from './fetchRequests';
 import domUpdates from './domUpdates';
@@ -28,12 +30,13 @@ let selectedDestination;
 
 // LOAD DATA MODEL HERE
 window.addEventListener("load", loadAllDataFromAPI);
+submitTripRequestButton.addEventListener('click', loadUpdatedTripsData)
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
 calculateTripCostButton.addEventListener('click', displayTripCostEstimateMessage)
 tripStartDateSelection.addEventListener('click', domUpdates.disableSelectionOfPastDates())
 
 function loadAllDataFromAPI() {
-  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(9)])
+  Promise.all([fetchRequests.getDestinations(), fetchRequests.getTrips(), fetchRequests.getTraveler(10)])
   .then(values => {
     destinations = generateAllDestinations(values[0]);
     allTrips = generateAllTrips(values[1], destinations);
@@ -45,31 +48,61 @@ function loadAllDataFromAPI() {
   });
 }
 
-function addTotalCostOfTripToTripToBeBooked() {
-  let tripToBeBooked = instantiateNewTripObject();
-  tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
-  return tripToBeBooked;
+function loadUpdatedTripsData() {
+  let bookedTrip = instantiateNewTripObject();
+  Promise.all([fetchRequests.postTrip(bookedTrip), fetchRequests.getTrips()])
+  .then(values => {
+    allTrips = generateAllTrips(values[1], destinations);
+    updateTravelersTrips();
+  })
+
+  function updateTravelersTrips() {
+    // let bookedTrip = allTrips.find(trip => trip.id === idOfPendingTrip);
+    addPendingTripToTravelersTrips(bookedTrip);
+    displayAllUserTrips(traveler);
+    domUpdates.displayMessageUponSuccessfulTripRequest(bookedTrip.destinationName);
+  }
+
+function addPendingTripToTravelersTrips(pendingTrip) {
+  traveler.trips.push(pendingTrip)
 }
 
-function instantiateNewTripObject() {
-  let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
-  let possibleTrip = new Trip(tripData, destinations);
-  possibleTrip.userID = traveler.id;
-  possibleTrip.numberOfTravelers = numberOfTravelersSelection.value;
-  possibleTrip.date = tripStartDateSelection.value;
-  possibleTrip.duration = tripDurationSelection.value;
-  possibleTrip.status = 'pending';
-  return possibleTrip;
 }
 
 function displayTripCostEstimateMessage() {
-  let trip = addTotalCostOfTripToTripToBeBooked();
-  if (trip.duration && trip.date && trip.numberOfTravelers) {
-  domUpdates.displayCostOfTrip(trip.totalCostOfTrip, trip.destinationName)
+  if (!returnTripWithTotalCostProperty().duration || !returnTripWithTotalCostProperty().date || !returnTripWithTotalCostProperty().numberOfTravelers || !selectedDestination) {
+    domUpdates.displayErrorMessageIfAnyInputHasNoValue();
+  } else {
+    let trip = returnTripWithTotalCostProperty();
+    domUpdates.displayCostOfTrip(trip.totalCostOfTrip, trip.destinationName)
+  }
+}
+
+function returnTripWithTotalCostProperty() {
+  let tripToBeBooked = instantiateNewTripObject();
+  if(tripToBeBooked) {
+  tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
+  return tripToBeBooked;
+}
+}
+
+function instantiateNewTripObject() {
+  if (selectedDestination) {
+  let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
+  let possibleTrip = new Trip(tripData, destinations);
+  let formattedTripDate = moment(tripStartDateSelection.value).format('YYYY/MM/DD');
+  possibleTrip.id = allTrips.length + 1;
+  possibleTrip.userID = traveler.id;
+  possibleTrip.numberOfTravelers = numberOfTravelersSelection.value;
+  possibleTrip.date = formattedTripDate;
+  possibleTrip.duration = tripDurationSelection.value;
+  possibleTrip.status = 'pending';
+  return possibleTrip;
 } else {
-  domUpdates.displayErrorMessageIfAnyInputHasNoValue();
+  domUpdates.displayErrorMessageIfAnyInputHasNoValue()
 }
 }
+
 
 function selectDestinationPriorToBooking() {
   selectedDestination = destinations.getDestinationById(parseInt(event.target.id));
