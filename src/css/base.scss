@@ -1,4 +1,28 @@
+  $solid-black-border: solid black;
 
+  $gold-card: #325084;
+
+  $blue-steel: #194A9B;
+
+  @mixin flex-display($direction, $content) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: center;
+  }
+
+  @mixin font-size($size) {
+    font-size: $size;
+  }
+
+  @mixin set-height-and-width($height, $width) {
+    height: $height;
+    width: $width;
+  }
+
+  @mixin set-width-only($width) {
+    width: $width;
+  }
 
   body {
     font-family: courier,arial,helvetica;
@@ -14,39 +38,34 @@
   header {
     display: flex;
     justify-content: space-around;
-    border: solid black;
+    border: $solid-black-border;
     background-color: #77B33E;
     grid-area: header;
   }
 
   aside {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #325084;
+    @include flex-display(column, center)
+    background-color: $gold-card;
   }
 
   .my-trips {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-display(column, center)
     overflow-y: scroll;
-    border: solid black;
+    border: $solid-black-border;
+    height: 45rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     grid-area: aside;
   }
 
   main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #325084;
+    @include flex-display(column, center)
+    background-color: $gold-card;
     grid-area: main;
   }
 
   form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-display(column, center)
     margin-bottom: 1rem;
   }
 
@@ -55,35 +74,38 @@
     grid-template-columns: 2fr 2fr 2fr 2fr;
     overflow-y: scroll;
     grid-gap: 1rem;
-    height: 40rem;
-    width: 90%;
+    @include set-height-and-width(42rem, 90%);
   }
 
   .input-wrapper {
     display: flex;
     justify-content: space-between;
-    width: 16rem;
+    @include set-width-only(16rem);
   }
 
   .input-wrapper:nth-child(1) {
-    width: 18rem;
+    @include set-width-only(18rem);
   }
 
   .trip-submit-wrapper {
     display: flex;
     justify-content: space-around;
-    width: 20rem;
+    @include set-width-only(20rem);
   }
 
   #duration,
   #travelers {
-    width: 9rem;
+    @include set-width-only(9rem)
     margin-right: -2rem;
   }
 
   h1 {
-    color: #194A9B;
+    color: $blue-steel;
     font-size: 3rem;
+  }
+
+  h2 {
+    @include font-size(2.5rem);
   }
 
   .trips-header,
@@ -95,7 +117,7 @@
   button {
     border-radius: .3rem;
     margin: 1rem;
-    color: #194A9B;
+    color: $blue-steel;
     background-color: green;
   }
 
@@ -105,46 +127,39 @@
     color: #ffffff;
   }
   .date-and-duration {
-    font-size: .7rem;
+    @include font-size(.7rem);
   }
 
   .destination-name {
-    font-size: .8rem;
+    @include font-size(.8rem);
   }
 
   .calculate-cost,
   .submit {
     border-radius: 1rem;
     margin: 1rem;
-    color: #194A9B;
-    background-color: #F4EF0E ;
+    color: $blue-steel;
+    background-color: #F4EF0E;
     height: 3rem;
     width: 8rem;
   }
 
-
   .destination-card {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-display(column, center);
     background-color: #F0CB1F;
-    border: solid black;
+    border: $solid-black-border;
     height: 20rem;
   }
 
   .trip-card {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-display(column, center);
     background-color: gold;
-    border: solid black;
-    width: 15rem;
-    height: 400px;
+    border: $solid-black-border;
+    @include set-height-and-width(400px, 15rem);
   }
 
   .trip-image {
     background-color: #ffffff;
-    border: solid black;
-    height: 13rem;
-    width: 13rem;
+    border: $solid-black-border;
+    @include set-height-and-width(13rem, 13rem);
   }

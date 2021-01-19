@@ -15,8 +15,6 @@ class Traveler {
     }, 0);
     return totalMoneySpentForGivenYear;
   }
-
-
 }
 
 module.exports = Traveler;
