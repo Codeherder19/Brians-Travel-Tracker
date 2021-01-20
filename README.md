@@ -1,105 +1,48 @@
-# Webpack Starter Kit
+## Contributors:
+- **Brian Forbes**
+- **Johnny Cassidy**
+- [**Brian Forbes**](https://github.com/Codeherder19)
+- [**Johnny Cassidy**](https://github.com/pJanks)
 
-## Clone This Repo
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Technologies Used:
+- *JavaScript*
+- *HTML5*
+- *CSS3*
+- *Flex-box and Flex-grid*
+- *Github*
+- *Google Chrome - Developer Console*
+- *Normalize*
+- *Webpack*
+- *Moment*
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+## Instructions for running/viewing the project:
+Clone down this repo, as well as the repos for travel tracker api and webpack starter kit listed below. Follow instructions to get the travel tracker api up and running. Once you have done all of that, go into your terminal and CD into this projects directory. Run npm start and navigate to the site that pops up in your terminal, it should be localhost:8080. From here, you will want to enter a user name and password. The user name is formatted as username35 or username22 for example, with the number being the id of the user whose data will be recalled from the API and used to populate the DOM. The number must be from 1-50, as there are only 50 traveler's in the API. The password is always traveler2020. From here, you can select a trip start date, duration for trip in number of days, as well as a number of travelers. Next, browse the destinations and click the reserve button on a destination of your choice. You can now click calculate cost to view the estimated cost of this potential trip. Clicking the submit button will generate a trip card in the My Trips section on the left with a status of pending. Iteration 4, which I did not finish, would allow a travel agent/admin access at which point trips can be approved or deleted or modified.
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+![Screenshot of Travel by Brian application]([Imgur](https://i.imgur.com/5cTAr61.png))
+![Screenshot of Travel by Brian application]([Imgur](https://i.imgur.com/HIhSUOd.png))
 
-## Setup
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
 
-Then install the library dependencies. Run:
+### GITHUB Links
+[Find the project repo here](https://github.com/Codeherder19/Brians-Travel-Tracker)
+[Find the travel tracker api repo here](https://github.com/turingschool-examples/travel-tracker-api)
+[Find the travel webpack starter kit repo here](https://github.com/turingschool-examples/webpack-starter-kit)
 
-```bash
-npm install
-```
+### Future Additions
+1. I wrote a dynamic function that could take in any year (2019, 2020, or 2021) and give back the amount of money spent on trips for that year. As of now, I have it set up with a default argument of 2021 so it only displays the current years travel expenses.
+2. I would like to finish iteration for so there is a travel agent/admin access and a traveler's pending trips can be approved and trips can be deleted as necessary.
+3. I would like a trip card to pop up when the calculate cost button is clicked, and this card would contain an ok button and a submit button. The ok button would take you back to main view and reset all of your input selections such as start date, number of travelers, etc. The submit button would take the place of the current submit button.
+4. I would have liked to do more sad path testing but I ran out of time.
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+### WINS
+1. Creating a login page that successfully passed an argument into the api calls which then populates the page with all of a travelers data.
+2. Getting an accessibility score of 100.
+3. Setting up normalize which I have never used before.
+4. Adding multiple break points so the app is responsive across all screen sizes.
+5. Utilizing SASS mix-ins and variables.
 
-## Where to Add Your Code
-
-### JavaScript
-
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
-
-**Create all of your feature code files in the `src` directory.**
-
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
-
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./src` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### CSS (SCSS/SASS)
-
-This project is setup to use SCSS/SASS files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
-
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+### Challenges
+1. Figuring out the best way to determine whether a trip was current or not. I ended up using a combination of Date.now() and Moment syntax.
+2. The login page took much longer than expected.
+3. Normalize was a challenge. I realize I should have set that up at the beginning. A lot of html elements and CSS properties got all out of whack when this was applied and it took some time to hunt down where the issue was so elements weren't off center where they were originally centered just fine before normalize was applied.
