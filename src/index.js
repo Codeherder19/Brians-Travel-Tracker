@@ -146,5 +146,3 @@ const generateAllTrips = (tripData, destinationsObject) => {
 const generateTraveler = (currentUser, allTripObjects) => {
   return new Traveler(currentUser, allTripObjects);
 }
-
-// DOM UPDATES

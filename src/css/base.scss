@@ -36,10 +36,12 @@
   }
 
   .login-error-message {
+    @include font-size(1.5rem);
     margin: 0%;
   }
 
   .login-submit {
+    color: $gold-card;
     @include font-size(1.5rem);
   }
 
@@ -74,7 +76,7 @@
 
   aside {
     @include flex-display(column, center)
-    background-color: $gold-card;
+    background-color: $blue-steel;
   }
 
   .my-trips {
@@ -89,7 +91,7 @@
 
   main {
     @include flex-display(column, center)
-    background-color: $gold-card;
+    background-color: $blue-steel;
     grid-area: main;
   }
 
