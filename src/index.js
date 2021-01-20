@@ -10,7 +10,6 @@ import Trip from './Trip.js';
 import Traveler from './Traveler';
 
 // QUERY SELECTORS HERE
-const reserveTripButtons = document.querySelectorAll('.reserve-button');
 const calculateTripCostButton = document.querySelector('.calculate-cost');
 const submitTripRequestButton = document.querySelector('.submit');
 const tripStartDateSelection = document.querySelector('#date');
@@ -25,7 +24,6 @@ const loginForm = document.querySelector('.login-wrapper');
 
 
 // ADD EVENT LISTENERS HERE
-// window.addEventListener("load", loadAllDataFromAPI);
 submitTripRequestButton.addEventListener('click', loadUpdatedTripsData)
 allDestinationsSection.addEventListener('click', selectDestinationPriorToBooking)
 calculateTripCostButton.addEventListener('click', displayTripCostEstimateMessage)
@@ -59,7 +57,6 @@ function validateLoginForm(event) {
     if (!userIDNumber || userIDNumber < 1 || userIDNumber > 50 || passwordInput.value !== 'traveler2020') {
       domUpdates.displayLoginErrorMessage();
     } else {
-      console.log("success");
       loginForm.style.display = 'none';
       mainPage.style.display = 'grid';
       loadAllDataFromAPI(userIDNumber);
@@ -81,10 +78,9 @@ function loadUpdatedTripsData() {
     domUpdates.displayMessageUponSuccessfulTripRequest(bookedTrip.destinationName);
   }
 
-function addPendingTripToTravelersTrips(pendingTrip) {
-  traveler.trips.push(pendingTrip)
-}
-
+  function addPendingTripToTravelersTrips(pendingTrip) {
+    traveler.trips.push(pendingTrip)
+  }
 }
 
 function displayTripCostEstimateMessage() {
@@ -99,26 +95,26 @@ function displayTripCostEstimateMessage() {
 function returnTripWithTotalCostProperty() {
   let tripToBeBooked = instantiateNewTripObject();
   if(tripToBeBooked) {
-  tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
-  return tripToBeBooked;
-}
+    tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
+    return tripToBeBooked;
+  }
 }
 
 function instantiateNewTripObject() {
   if (selectedDestination) {
-  let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
-  let possibleTrip = new Trip(tripData, destinations);
-  let formattedTripDate = moment(tripStartDateSelection.value).format('YYYY/MM/DD');
-  possibleTrip.id = allTrips.length + 1;
-  possibleTrip.userID = traveler.id;
-  possibleTrip.numberOfTravelers = numberOfTravelersSelection.value;
-  possibleTrip.date = formattedTripDate;
-  possibleTrip.duration = tripDurationSelection.value;
-  possibleTrip.status = 'pending';
-  return possibleTrip;
-} else {
-  domUpdates.displayErrorMessageIfAnyInputHasNoValue()
-}
+    let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
+    let possibleTrip = new Trip(tripData, destinations);
+    let formattedTripDate = moment(tripStartDateSelection.value).format('YYYY/MM/DD');
+    possibleTrip.id = allTrips.length + 1;
+    possibleTrip.userID = traveler.id;
+    possibleTrip.numberOfTravelers = numberOfTravelersSelection.value;
+    possibleTrip.date = formattedTripDate;
+    possibleTrip.duration = tripDurationSelection.value;
+    possibleTrip.status = 'pending';
+    return possibleTrip;
+  } else {
+    domUpdates.displayErrorMessageIfAnyInputHasNoValue()
+  }
 }
 
 

@@ -1,0 +1,34 @@
+@import 'sassVariables';
+@import 'sassMixins';
+
+aside {
+  @include flex-display(column, center)
+  background-color: $blue-steel;
+}
+
+.my-trips {
+  @include flex-display(column, center)
+  overflow-y: scroll;
+  border: $solid-black-border;
+  height: 45rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  grid-area: aside;
+}
+
+.trips-header {
+  @include font-size(2.2rem);
+}
+
+.trip-card {
+  @include flex-display(column, center);
+  background-color: $gold-card;
+  border: $solid-black-border;
+  @include set-height-and-width(400px, 15rem);
+}
+
+.trip-image {
+  background-color: #ffffff;
+  border: $solid-black-border;
+  @include set-height-and-width(13rem, 13rem);
+}

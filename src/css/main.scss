@@ -1,0 +1,94 @@
+@import 'sassVariables';
+@import 'sassMixins';
+
+.full-content-wrapper {
+  font-family: courier,arial,helvetica;
+  display: none;
+  height: 100vh;
+  grid-template-columns: .2fr 1.8fr;
+  grid-template-rows:  .1fr 1.9fr;
+  grid-template-areas:
+    "header header"
+    "aside main";
+}
+
+main {
+  @include flex-display(column, center)
+  background-color: $blue-steel;
+  grid-area: main;
+}
+
+form {
+  @include flex-display(column, center)
+  margin-bottom: 1rem;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  overflow-y: scroll;
+  grid-gap: 1rem;
+  @include set-height-and-width(42rem, 90%);
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  @include set-width-only(16rem);
+}
+
+.input-wrapper:nth-child(1) {
+  @include set-width-only(18rem);
+}
+
+.trip-submit-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  @include set-width-only(20rem);
+}
+
+#duration,
+#travelers {
+  @include set-width-only(9rem)
+  margin-right: -2rem;
+}
+
+button {
+  border-radius: .3rem;
+  margin: 1rem;
+  color: $blue-steel;
+  background-color: green;
+}
+
+.reserve-button {
+  width: 6rem;
+  height: 3rem;
+  color: #fff;
+}
+
+.date-and-duration {
+  @include font-size(.7rem);
+}
+
+.destination-name {
+  @include font-size(.8rem);
+}
+
+.calculate-cost,
+.submit {
+  border-radius: 1rem;
+  margin: 1rem;
+  color: $blue-steel;
+  background-color: #F4EF0E;
+  height: 3rem;
+  width: 8rem;
+}
+
+.destination-card {
+  @include flex-display(column, center);
+  background-color: #F0CB1F;
+  border: $solid-black-border;
+  height: 20rem;
+}
