@@ -9,136 +9,74 @@
     font-family: courier,arial,helvetica;
   }
 
-  // .full-content-wrapper {
-  //   font-family: courier,arial,helvetica;
-  //   display: none;
-  //   height: 100vh;
-  //   grid-template-columns: .2fr 1.8fr;
-  //   grid-template-rows:  .1fr 1.9fr;
-  //   grid-template-areas:
-  //     "header header"
-  //     "aside main";
-  // }
+  @media only screen and (max-width: 1380px) {
+    section {
+      grid-template-columns: 2fr 2fr 2fr;
+    }
+  }
 
-  // aside {
-  //   @include flex-display(column, center)
-  //   background-color: $blue-steel;
-  // }
+  @media only screen and (max-width: 1090px) {
+    section {
+      grid-template-columns: 2fr 2fr;
+    }
 
-  // .my-trips {
-  //   @include flex-display(column, center)
-  //   overflow-y: scroll;
-  //   border: $solid-black-border;
-  //   height: 45rem;
-  //   margin-top: 1rem;
-  //   margin-bottom: 2rem;
-  //   grid-area: aside;
-  // }
+    .money-spent {
+      @include font-size(.8rem);
+    }
 
-  // main {
-  //   @include flex-display(column, center)
-  //   background-color: $blue-steel;
-  //   grid-area: main;
-  // }
+    .welcome-msg,
+    .company-name {
+      @include font-size(2rem);
+    }
+  }
 
-  // form {
-  //   @include flex-display(column, center)
-  //   margin-bottom: 1rem;
-  // }
-  //
-  // section {
-  //   display: grid;
-  //   grid-template-columns: 2fr 2fr 2fr 2fr;
-  //   overflow-y: scroll;
-  //   grid-gap: 1rem;
-  //   @include set-height-and-width(42rem, 90%);
-  // }
-  //
-  // .input-wrapper {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   @include set-width-only(16rem);
-  // }
-  //
-  // .input-wrapper:nth-child(1) {
-  //   @include set-width-only(18rem);
-  // }
-  //
-  // .trip-submit-wrapper {
-  //   display: flex;
-  //   justify-content: space-around;
-  //   @include set-width-only(20rem);
-  // }
+  @media only screen and (max-width: 885px) {
+    section {
+      grid-template-columns: 2fr;
+    }
 
-  // #duration,
-  // #travelers {
-  //   @include set-width-only(9rem)
-  //   margin-right: -2rem;
-  // }
+    .money-spent {
+      @include font-size(.8rem);
+    }
 
-  // h1 {
-  //   color: $blue-steel;
-  //   font-size: 3rem;
-  // }
+    .welcome-msg,
+    .company-name {
+      @include font-size(2rem);
+    }
+  }
 
-  // h2 {
-  //   @include font-size(1rem);
-  //   color: $blue-steel;
-  // }
+  @media only screen and (max-width: 765px) {
+    .welcome-msg {
+      display: none
+    }
 
-  // .trips-header,
-  // .money-spent,
-  // label {
-  //   color: #fff;
-  // }
+    .company-name {
+      @include font-size(3rem);
+    }
+  }
 
-  // button {
-  //   border-radius: .3rem;
-  //   margin: 1rem;
-  //   color: $blue-steel;
-  //   background-color: green;
-  // }
+  @media only screen and (max-width: 620px) {
+    .full-content-wrapper {
+      height: 100vh;
+      grid-template-columns: 1fr;
+      grid-template-rows:  1fr 1fr 1fr;
+      grid-template-areas:
+        "header"
+        "main"
+        "aside"
+    }
 
-  // .reserve-button {
-  //   width: 6rem;
-  //   height: 3rem;
-  //   color: #fff;
-  // }
-  //
-  // .date-and-duration {
-  //   @include font-size(.7rem);
-  // }
-  //
-  // .destination-name {
-  //   @include font-size(.8rem);
-  // }
+    .company-name {
+      @include font-size(1.5rem);
+    }
 
-  // .calculate-cost,
-  // .submit {
-  //   border-radius: 1rem;
-  //   margin: 1rem;
-  //   color: $blue-steel;
-  //   background-color: #F4EF0E;
-  //   height: 3rem;
-  //   width: 8rem;
-  // }
+    .trip-details {
+      @include set-height-and-width(2rem, 100%);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
 
-  // .destination-card {
-  //   @include flex-display(column, center);
-  //   background-color: #F0CB1F;
-  //   border: $solid-black-border;
-  //   height: 20rem;
-  // }
 
-  // .trip-card {
-  //   @include flex-display(column, center);
-  //   background-color: $gold-card;
-  //   border: $solid-black-border;
-  //   @include set-height-and-width(400px, 15rem);
-  // }
 
-  // .trip-image {
-  //   background-color: #ffffff;
-  //   border: $solid-black-border;
-  //   @include set-height-and-width(13rem, 13rem);
-  // }
+
+  }

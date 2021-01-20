@@ -16,6 +16,10 @@ aside {
   grid-area: aside;
 }
 
+.trips-header {
+  @include font-size(2.2rem);
+}
+
 .trip-card {
   @include flex-display(column, center);
   background-color: $gold-card;
