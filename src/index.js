@@ -59,7 +59,6 @@ function validateLoginForm(event) {
     if (!userIDNumber || userIDNumber < 1 || userIDNumber > 50 || passwordInput.value !== 'traveler2020') {
       domUpdates.displayLoginErrorMessage();
     } else {
-      console.log("success");
       loginForm.style.display = 'none';
       mainPage.style.display = 'grid';
       loadAllDataFromAPI(userIDNumber);

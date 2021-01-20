@@ -1,0 +1,50 @@
+@import 'sassVariables';
+@import 'sassMixins';
+
+
+  .login-wrapper {
+    @include set-height-and-width(90vh, 100vw);
+    @include flex-display(column, center);
+  }
+
+  .login-welcome-message {
+    @include font-size(1.5rem);
+    margin: 0%;
+    padding: 3rem;
+  }
+
+  .login-form {
+    background-color: $blue-steel;
+    border: $solid-black-border;
+    @include flex-display(column, center);
+    @include set-height-and-width(20rem, 50rem)
+  }
+
+  .form-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: $gold-card;
+    @include set-height-and-width(5rem, 50%);
+  }
+
+  .login-error-message {
+    @include font-size(1.5rem);
+    margin: 0%;
+  }
+
+  .login-submit {
+    color: $gold-card;
+    @include font-size(1.5rem);
+  }
+
+  .input-heading {
+    display: inline;
+    color: $blue-steel;
+  }
+
+  .login-header {
+    @include flex-display(column, center);
+    @include set-height-and-width(10rem, 50rem)
+  }

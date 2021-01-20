@@ -1,0 +1,26 @@
+@import 'sassVariables';
+@import 'sassMixins';
+
+header {
+  display: flex;
+  justify-content: space-around;
+  border: $solid-black-border;
+  background-color: #77B33E;
+  grid-area: header;
+}
+
+h1 {
+  color: $blue-steel;
+  font-size: 3rem;
+}
+
+h2 {
+  @include font-size(1rem);
+  color: $blue-steel;
+}
+
+.trips-header,
+.money-spent,
+label {
+  color: #fff;
+}
