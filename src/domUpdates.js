@@ -8,6 +8,11 @@ displayNameOfCurrentUser(user) {
   welcomeMessage.innerText = `Welcome, ${firstName}!`;
 },
 
+displayLoginErrorMessage() {
+  const errorMessageHeading = document.querySelector('.login-error-message');
+  errorMessageHeading.innerText = 'Please provide a valid user name and password!';
+},
+
 displayUserTrip(tripName, tripTravelers, tripDuration, tripStartDate, tripImage, imageAltText, tripStatus) {
   const travelersTripSection = document.querySelector('.my-trips');
   const tripHTML = `<div class="trip-card">
