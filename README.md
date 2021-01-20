@@ -19,10 +19,8 @@
 ## Instructions for running/viewing the project:
 Clone down this repo, as well as the repos for travel tracker api and webpack starter kit listed below. Follow instructions to get the travel tracker api up and running. Once you have done all of that, go into your terminal and CD into this projects directory. Run npm start and navigate to the site that pops up in your terminal, it should be localhost:8080. From here, you will want to enter a user name and password. The user name is formatted as username35 or username22 for example, with the number being the id of the user whose data will be recalled from the API and used to populate the DOM. The number must be from 1-50, as there are only 50 traveler's in the API. The password is always traveler2020. From here, you can select a trip start date, duration for trip in number of days, as well as a number of travelers. Next, browse the destinations and click the reserve button on a destination of your choice. You can now click calculate cost to view the estimated cost of this potential trip. Clicking the submit button will generate a trip card in the My Trips section on the left with a status of pending. Iteration 4, which I did not finish, would allow a travel agent/admin access at which point trips can be approved or deleted or modified.
 
-![Screenshot of Travel by Brian application]([Imgur](https://i.imgur.com/5cTAr61.png))
-![Screenshot of Travel by Brian application]([Imgur](https://i.imgur.com/HIhSUOd.png))
-
-
+![Screenshot of Travel by Brian application](https://i.imgur.com/HIhSUOd.png)
+![Screenshot of Travel by Brian application](https://i.imgur.com/5cTAr61.png)
 
 ### GITHUB Links
 [Find the project repo here](https://github.com/Codeherder19/Brians-Travel-Tracker)
