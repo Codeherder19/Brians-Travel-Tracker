@@ -45,6 +45,18 @@
     }
   }
 
+  @media only screen and (max-width: 825px) {
+    .login-header,
+    .login-form {
+      @include set-width-only(500px)
+    }
+
+    .login-welcome-message,
+    .login-error-message {
+      @include font-size(1rem);
+    }
+  }
+
   @media only screen and (max-width: 765px) {
     .welcome-msg {
       display: none
@@ -76,7 +88,27 @@
       margin-bottom: 2rem;
     }
 
+    @media only screen and (max-width: 525px) {
+      .login-header,
+      .login-form {
+        @include set-width-only(380px);
+      }
 
+      .login-header {
+        height: 100px;
+      }
 
+      .login-welcome-message,
+      .login-error-message {
+        @include font-size(.9rem);
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+      }
 
+      .input-heading {
+        display: none;
+      }
+    }
   }
